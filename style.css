@@ -237,6 +237,21 @@ section {
     font-size: 1.2rem;
 }
 
+/* Project links – default */
+.project-card a {
+    color: var(--porfolio-1);              /* black text */
+    text-decoration: underline;
+    text-decoration-color: var(--porfolio-1); /* black underline */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+/* Project links – hover */
+.project-card a:hover {
+    color: var(--porfolio-4);              /* white text */
+    text-decoration-color: var(--porfolio-4); /* white underline */
+}
+
+
 .project-card p {
     text-align: justify;
 }
