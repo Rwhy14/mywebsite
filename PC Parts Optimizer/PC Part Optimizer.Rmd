@@ -1,0 +1,69 @@
+---
+title: "PC Part Optimizer"
+author: "Ryan Chou"
+output: pdf_document
+---
+
+# Introduction
+
+Our optimization model is a PC part picker that selects the best parts (with “best” derived from individual
+performance metrics) for a custom gaming PC based on a user inputted budget, color, and RGB preference.
+The objective of the model is to maximize the performance of the PC while conforming to the user’s provided preferences. The parts that the model will select for the PC are: GPU, CPU, motherboard, RAM, storage, case, CPU cooler, power supply, and case fans.
+
+# Motivation
+
+As PC gaming has increased in popularity, the desire for gamers to build their own custom PCs as a cost
+effective method of obtaining a high-performance machine has also increased. However, a hurdle that many
+people face when seeking to build their own PC is deciding which products to choose and maneuvering
+the compatibility of different parts. The motivation behind our model comes from eliminating the lengthy
+process of research required for selecting proper pc parts. As long as a user has an idea of what they’re
+looking for, the optimizer can produce a complete list of parts for them to purchase that will result in the
+highest performing PC possible.
+
+# Decision Variables
+
+Each decision variable is a binary indicator representing whether a specific model of a certain PC part is to
+be included in the final build. The only exceptions are the integer decision variables for RAM and case fans,
+which represent the amount of each model to include. (See Appendix for link to spreadsheet that details
+which product each particular decision variable corresponds to.)
+
+- $G_i \in B, i = 1, ..., 12$ (GPU models)
+- $C_i \in B, i = 1, ..., 4$ (CPU models [Intel])
+- $C_i \in B, i = 5, ..., 12$ (CPU models [AMD])
+- $M_i \in B, i = 1, ..., 10$ (Motherboard models [Intel])
+- $M_i \in B, i = 11, ..., 21$ (Motherboard models [AMD])
+- $R_i \in B, i = 1, ..., 18$ (RAM models)
+- $m_i \in Z, i = 1, ..., 18$ (1/2 No. of sticks for RAM model i)
+- $S_i \in B, i = 1, ..., 5$ (Storage models [M.2SSD])
+- $S_i \in B, i = 6, ..., 10$ (Storage models [2.5SSD])
+- $S_i \in B, i = 11, ..., 15$ (Storage models [HDD])
+- $E_i \in B, i = 1, ..., 16$ (Case models)
+- $P_i \in B, i = 1, ..., 15$ (Power Supply models)
+- $L_i \in B, i = 1, ..., 14$ (CPU Cooler models)
+- $F_i \in B, i = 1, ..., 15$ (Case Fan models)
+- $n_i \in Z, i = 1, ..., 15$  (No. of fans for Case Fan model i)
+
+# Impact of Color on Performance
+
+When holding the budget at a constant value of $4000 and setting RGB preference as any, the performance
+value for each color can be analyzed. When setting the color to pink the optimal value reported a performance
+of 68.22 and the total price was $3988.74. When setting the color to black the optimal value reported a
+performance of 87.58 and the total price was $3953.82. When setting the color to white the optimal value
+reported a performance of 79.71 and the total price was $3983.97. When setting the color to grey the
+optimal value reported a performance of 61.82 and the total price was $3753.16. When setting the color to
+rainbow the optimal value reported a performance of 69.18 and the total price was $3985.79. Ultimately,
+color constraints appear to significantly influence what components the optimizer selects. The differences
+in performance between colors comes almost entirely from the GPU and CPU/motherboard performance.
+This suggests that the black color option has the broadest or best component availability. The grey option
+appears to severely constrain the component selection, forcing trade-offs that harm performance.
+
+# Appendix
+## Video Link
+
+https://youtu.be/9SyCkPg4j1w
+
+## Variable Encoding Spreadsheet
+
+
+https://docs.google.com/spreadsheets/d/1PqUvuOeDYz3w5bLp5Ggmt4DBSJdclEQtLnNM-4WLCi0/edit?
+usp=sharing
