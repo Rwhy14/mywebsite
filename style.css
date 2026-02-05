@@ -237,10 +237,6 @@ section {
     font-size: 1.2rem;
 }
 
-.proj:visited a:visited {
-    color: inherit;
-}
-
 .project-card p {
     text-align: justify;
 }
@@ -265,4 +261,8 @@ a:visited {
 
 a:hover {
     text-decoration: underline;
+}
+
+a {
+    color: var(--porfolio-4);
 }
